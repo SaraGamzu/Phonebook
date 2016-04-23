@@ -1,0 +1,9 @@
+*.pdb
+bin
+obj
+[Dd]ebug*/
+*.suo
+_ReSharper*
+.ntvs_analysis.dat
+
+

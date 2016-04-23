@@ -1,0 +1,14 @@
+{
+  "name": "phone-book",
+  "version": "0.0.0",
+  "description": "PhoneBook",
+  "main": "service.js",
+  "author": {
+    "name": "Sara",
+    "email": ""
+  },
+  "dependencies": {
+    "express": "4.13.4",
+    "jade": "*"
+  }
+}

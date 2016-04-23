@@ -1,0 +1,50 @@
+﻿<style>
+    md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+    border-color:#00897B;
+}
+
+</style>
+<md-dialog aria-label="New contant" ng-cloak style="min-width: 300px">
+    <form name="contactForm">
+        <md-toolbar>
+            <div class="md-toolbar-tools" style="background-color: #00897B">
+                <h2>New contant</h2>
+                <span flex></span>
+            </div>
+        </md-toolbar>
+
+        <md-dialog-content>
+            <div class="md-dialog-content">
+                <div>
+                    <md-input-container class="md-block">
+                        <label>Name</label>
+                        <input required name="contact.name" ng-model="contact.name">
+                    </md-input-container>
+                </div>
+                <div>
+                    <md-input-container class="md-block">
+                        <label>Address</label>
+                        <input required name="contact.address" ng-model="contact.address">
+                    </md-input-container>
+                </div>
+                <div>
+                    <md-input-container class="md-block">
+                        <label>Phone</label>
+                        <input required name="contact.phone" ng-model="contact.phone" valid-number>
+                    </md-input-container>
+                </div>
+            </div>
+            <span style="font-size: 12px; color: red;margin-left:17px" ng-show="contactForm.$error.required"> * All fields are required</span>
+        </md-dialog-content>
+
+        <md-dialog-actions layout="row">
+            <span flex></span>
+            <md-button class="btn btn-default" ng-click="cancel()" style="border:1px solid silver">
+                Cancel
+            </md-button>
+            <md-button ng-click="answer('save')" style="margin-right:20px;border:1px solid silver" ng-disabled="contactForm.$error.required">
+                Save
+            </md-button>
+        </md-dialog-actions>
+    </form>
+</md-dialog>

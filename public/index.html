@@ -1,0 +1,82 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+    <meta charset="utf-8" />
+    <link href="stylesheets/angular-material.css" rel="stylesheet" />
+    <link href="stylesheets/bootstrap.css" rel="stylesheet" />
+    <link href="stylesheets/main.css" rel="stylesheet" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body ng-app="app" ng-cloak class="flex layout-column">
+    <div ng-controller="MainCtrl">
+        <div class="jumbotron " style="border-bottom: 1px solid #00897B">
+            <h1>phone book</h1>
+        </div>
+        <div style="padding-left: 15px; padding-right: 15px">
+            <div style="margin-bottom:10px" class="div_display">
+                <button class="md-primary md-raised btn btn-default" ng-click="showPrompt($event, null, -1)" style="height: 40px; margin-top:4px">
+                    <span class="glyphicon glyphicon-plus"></span>
+                    Add contact
+                </button>
+
+                <span flex></span>
+                <div>
+                    <md-input-container style="display: inline-flex" class="search_width">
+                        <label></label>
+                        <input placeholder="Search..." ng-model="searchText">
+                    </md-input-container>
+                    <span class="glyphicon glyphicon-search" style="color: gray;margin-top:18px"></span>
+                </div>
+            </div>
+
+            <div>
+                <md-grid-list layout-fill flex md-cols-sm="2" md-cols-xs="1" md-cols-md="3" md-cols-gt-md="5" md-cols- md-row-height-sm="145px" md-row-height="160px" md-gutter="8px">
+                    <md-grid-tile ng-repeat="item in data | filter:searchText">
+                        <md-card layout-fill layout-padding style="border: 1px solid #004D40; padding: 0; line-height: 2.8;" class="resultitem" class="md-raised ">
+                            <md-card-title class="card_title">
+                                <md-card-title-text>
+                                    <span class="md-headline font_weight" style="padding-left:8px">{{item.name}} </span>
+                                </md-card-title-text>
+                                <span class="glyphicon glyphicon-remove pointer" ng-click="DeleteContact($index)">
+                                </span>
+                            </md-card-title>
+
+                            <md-card-content ng-click="showPrompt($event, item, $index)">
+                                <div class="pointer flex" >
+                                    <div>
+                                        <span class="glyphicon glyphicon-user" style="font-size: 45px; margin-right: 20px; margin-top:7px"></span>
+                                    </div>
+                                    <div >
+                                        <div class="flex">
+                                            <span class="font_weight flex_1" >Address:</span>
+                                            <span class="flex_2" >{{item.address}}</span>
+                                        </div>
+                                        <div class="flex">
+                                            <span class="font_weight flex_1">Phone:</span>
+                                            <span class="flex_2" >{{item.phone}}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </md-card-content>
+                        </md-card>
+                    </md-grid-tile>
+                </md-grid-list>
+            </div>
+        </div>
+    </div>
+</body>
+
+
+<script src="../node_modules/angular/angular.js"></script>
+<script src="../node_modules/angular-animate/angular-animate.js"></script>
+<script src="../node_modules/angular-aria/angular-aria.js"></script>
+<script src="../node_modules/angular-material/angular-material.js"></script>
+
+<script src="javascripts/lib/jquery-1.10.2.js"></script>
+<script src="javascripts/lib/bootstrap.js"></script>
+<script src="javascripts/App.js"></script>
+<script src="javascripts/controllers/MainCtrl.js"></script>
+<script src="javascripts/services/MainService.js"></script>
+<script src="javascripts/directive/validNamber.js"></script>
+</html>
