@@ -37,6 +37,9 @@
     <Content Include="public\javascripts\controllers\MainCtrl.js" />
     <Content Include="public\javascripts\services\MainService.js" />
     <Content Include="public\javascripts\directive\validNamber.js" />
+    <Compile Include="api\homeController.js" />
+    <Compile Include="api\index.js" />
+    <Compile Include="data\index.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\routes.js" />
     <Compile Include="service.js" />
