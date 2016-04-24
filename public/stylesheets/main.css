@@ -1,93 +1,114 @@
-﻿  [ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
-            display: none !important;
-        }
-
-        .card_title {
-            background-color: #00897B;
-            color: white;
-            
-        }
-        .resultitem {
-            -moz-transition: 0.5s ease-in-out;
-            -o-transition: 0.5s ease-in-out;
-            -webkit-transition: 0.5s ease-in-out;
-            transition: 0.5s ease-in-out;
-        }
-
-            .resultitem:hover {
-                -webkit-transform: scale(1.04);
-                -moz-transform: scale(1.04);
-                -ms-transform: scale(1.04);
-                -o-transform: scale(1.04);
-                transform: scale(1.04);
-            }
-
-    md-input-container:not(.md-input-invalid).md-input-focused .md-input {
-    border-color:#00897B;
+﻿[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
 }
 
-        @media screen and (min-width: 960px) { 
-            .search_width {
-                width: 320px;
-            }
-        }
+span:focus, div:focus {
+    outline: none;
+    border: 0;
+}
 
-        
-        @media screen and (max-width: 959px) { 
-            .search_width {
-                width: 260px;
-            }
-        }
+.card_title {
+    background-color: #00897B;
+    color: white;
+}
 
-         
-          @media screen and (min-width: 351px ) and (max-width: 420px) {
-            .search_width {
-                width: 180px;
-            }
-        }  
+/*--------------------------------*/
+/****  INCRASE ITEM ON HOVER *****/
+/*-------------------------------*/
+.increase_hover {
+    -moz-transition: 0.5s ease-in-out;
+    -o-transition: 0.5s ease-in-out;
+    -webkit-transition: 0.5s ease-in-out;
+    transition: 0.5s ease-in-out;
+}
 
-           
-          @media screen and (max-width: 350px) { 
-            .search_width {
-                width: 140px;
-            }
-         
-        }  
-        @media screen and (max-width: 300px) { 
-            .search_width {
-                width: 190px;
-            }
-            .div_display {
-                display: block;
-            }
-        }
-        
-            @media screen and (min-width: 351px) { 
-             .div_display {
-                display: flex;
-            }
-         
-        }  
+    .increase_hover:hover {
+        -webkit-transform: scale(1.04);
+        -moz-transform: scale(1.04);
+        -ms-transform: scale(1.04);
+        -o-transform: scale(1.04);
+        transform: scale(1.04);
+    }
 
-      
-            .flex {
-                display: flex;
-            }
+
+/*------------------------------*/
+/****  INPUT BUTTOM BORDER *****/
+/*-----------------------------*/
+md-input-container:not(.md-input-invalid).md-input-focused .md-input {
+    border-color: #00897B;
+}
+
+
+/*---------------------------*/
+/****  SEARCH TEXT SIZE *****/
+/*-------------------------*/
+@media screen and (min-width: 960px) {
+    .search_width {
+        width: 320px;
+    }
+}
+
+
+@media screen and (max-width: 959px) {
+    .search_width {
+        width: 260px;
+    }
+}
+
+
+@media screen and (min-width: 351px ) and (max-width: 420px) {
+    .search_width {
+        width: 180px;
+    }
+}
+
+
+@media screen and (max-width: 350px) {
+    .search_width {
+        width: 140px;
+    }
+}
+
+@media screen and (max-width: 349px) {
+    .search_width {
+        width: 200px;
+    }
+
+    .div_display {
+        display: block;
+    }
+}
+
+@media screen and (min-width: 351px) {
+    .div_display {
+        display: flex;
+    }
+}
+
+
+/*---------------*/
+/****  FLEX *****/
+/*---------------*/
+.flex {
+    display: flex;
+}
+
 .flex_1 {
     -ms-flex: 1;
     -webkit-flex: 1;
     flex: 1;
 }
+
 .flex_2 {
     -ms-flex: 2;
     -webkit-flex: 2;
     flex: 2;
 }
 
-            .font_weight {
-                font-weight: bold;
-            }
+.font_weight {
+    font-weight: bold;
+}
 
-            .pointer {
-                cursor: pointer;
-            }
+.pointer {
+    cursor: pointer;
+}

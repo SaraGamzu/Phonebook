@@ -7,6 +7,7 @@
     <link href="stylesheets/bootstrap.css" rel="stylesheet" />
     <link href="stylesheets/main.css" rel="stylesheet" />
     <meta name="viewport" content="width=device-width, initial-scale=1">
+
 </head>
 <body ng-app="app" ng-cloak class="flex layout-column">
     <div ng-controller="MainCtrl">
@@ -33,24 +34,25 @@
             <div>
                 <md-grid-list layout-fill flex md-cols-sm="2" md-cols-xs="1" md-cols-md="3" md-cols-gt-md="5" md-cols- md-row-height-sm="145px" md-row-height="160px" md-gutter="8px">
                     <md-grid-tile ng-repeat="item in data | filter:searchText">
-                        <md-card layout-fill layout-padding style="border: 1px solid #004D40; padding: 0; line-height: 2.8;" class="resultitem" class="md-raised ">
+                        <md-card layout-fill layout-padding style="border: 1px solid #004D40; padding: 0; line-height: 2.8;" class="increase_hover" class="md-raised ">
                             <md-card-title class="card_title">
                                 <md-card-title-text>
-                                    <span class="md-headline font_weight" style="padding-left:8px">{{item.name}} </span>
+
+                                    <span class="md-headline font_weight" style="padding-left: 8px">{{item.name}} </span>
                                 </md-card-title-text>
-                                <span class="glyphicon glyphicon-remove pointer" ng-click="DeleteContact($index)">
-                                </span>
+                                    <span class="glyphicon glyphicon-remove pointer" ng-click="DeleteContact($index)" style="font-size: 20px; margin-top: 3px">
+                                    </span>
                             </md-card-title>
 
-                            <md-card-content ng-click="showPrompt($event, item, $index)">
-                                <div class="pointer flex" >
-                                    <div>
+                            <md-card-content>
+                                <div class="flex pointer" ng-click="showPrompt($event, item, $index)">
+                                    <div  class="">
                                         <span class="glyphicon glyphicon-user" style="font-size: 45px; margin-right: 20px; margin-top:7px"></span>
                                     </div>
-                                    <div >
+                                    <div style="width: 100%">
                                         <div class="flex">
-                                            <span class="font_weight flex_1" >Address:</span>
-                                            <span class="flex_2" >{{item.address}}</span>
+                                            <span class="font_weight flex_1">Address:</span>
+                                            <span class="flex_2">{{item.address}}</span>
                                         </div>
                                         <div class="flex">
                                             <span class="font_weight flex_1">Phone:</span>
