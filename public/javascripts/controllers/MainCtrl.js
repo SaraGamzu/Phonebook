@@ -82,7 +82,7 @@ app.controller('MainCtrl', ['$scope', 'MainService', '$mdDialog', '$mdMedia', 'f
     ind = ind + 25
     var r = 25
     if (ind + 25 >= $scope.Fulldata.length) {
-      r = $scope.data.length - ind
+      r = $scope.Fulldata.length - ind;
     }
     console.log("Loading")
     $scope.data = $scope.data.concat($scope.Fulldata.slice(ind, r + ind))
