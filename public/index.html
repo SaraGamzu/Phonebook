@@ -1,4 +1,4 @@
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title></title>
@@ -10,9 +10,9 @@
 
 </head>
 <body ng-app="app" ng-cloak class="flex layout-column">
-    <div ng-controller="MainCtrl">
+    <div ng-controller="MainCtrl" style="overflow-y: scroll" lazy-load>
         <div class="jumbotron " style="border-bottom: 1px solid #00897B">
-            <h1>phone book</h1>
+            <h1>Phonebook</h1>
         </div>
         <div style="padding-left: 15px; padding-right: 15px">
             <div style="margin-bottom:10px" class="div_display">
@@ -25,22 +25,22 @@
                 <div>
                     <md-input-container style="display: inline-flex" class="search_width">
                         <label></label>
-                        <input placeholder="Search..." ng-model="searchText">
+                        <input placeholder="Search..." ng-model="searchText" ng-change="typed()">
                     </md-input-container>
                     <span class="glyphicon glyphicon-search" style="color: gray;margin-top:18px"></span>
                 </div>
             </div>
 
-            <div>
-                <md-grid-list layout-fill flex md-cols-sm="2" md-cols-xs="1" md-cols-md="3" md-cols-gt-md="5" md-cols- md-row-height-sm="145px" md-row-height="160px" md-gutter="8px">
+            <div >
+                <md-grid-list   layout-fill flex md-cols-sm="2" md-cols-xs="1" md-cols-md="3" md-cols-gt-md="5" md-cols- md-row-height-sm="145px" md-row-height="160px" md-gutter="8px">
                     <md-grid-tile ng-repeat="item in data | filter:searchText">
                         <md-card layout-fill layout-padding style="border: 1px solid #004D40; padding: 0; line-height: 2.8;" class="increase_hover" class="md-raised ">
                             <md-card-title class="card_title">
-                                <md-card-title-text>
+                                <md-card-title-text >
 
                                     <span class="md-headline font_weight" style="padding-left: 8px">{{item.name}} </span>
                                 </md-card-title-text>
-                                    <span class="glyphicon glyphicon-remove pointer" ng-click="DeleteContact($index)" style="font-size: 20px; margin-top: 3px">
+                                    <span class="glyphicon glyphicon-remove pointer" ng-click="DeleteContact(item, $index)" style="font-size: 20px; margin-top: 3px">
                                     </span>
                             </md-card-title>
 
