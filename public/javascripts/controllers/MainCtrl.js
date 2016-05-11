@@ -1,12 +1,15 @@
-﻿app.controller('MainCtrl', ['$scope', 'MainService', '$mdDialog', '$mdMedia', function ($scope, MainService, $mdDialog, $mdMedia) {
+app.controller('MainCtrl', ['$scope', 'MainService', '$mdDialog', '$mdMedia', 'filterFilter', function ($scope, MainService, $mdDialog, $mdMedia, filterFilter ) {
 
     MainService.GetContacts().then(function (data) {
-        $scope.data = data.data.employees;
+       $scope.Fulldata = angular.copy(data.data.employees);
+        $scope.data = data.data.employees.slice(0, 25);
     });
 
-    $scope.DeleteContact = function (index) {
-        MainService.DeleteContact(index).then(function (data) {
+    $scope.DeleteContact = function (data, index) {
+        var indexSource = $scope.Fulldata.indexOf(data);
+        MainService.DeleteContact(indexSource).then(function (data) {
             $scope.data.splice(index, 1);
+            $scope.Fulldata.splice(indexSource, 1);
         });
     };
 
@@ -29,14 +32,16 @@
         if (index === -1) {
             MainService.AddContact(result).then(function (data) {
                 if (data !== "not a number") {
-                    $scope.data.splice($scope.data.length, 0, { "name": result.name, "address": result.address, "phone": result.phone });
+                    $scope.Fulldata.splice($scope.Fulldata.length, 0, { "name": result.name, "address": result.address, "phone": result.phone });
+                    filter();
                 }
             });
         } else {
-            
-            MainService.UpdateContact(result, index).then(function (data) {
+            var indexSource = $scope.Fulldata.indexOf(item);
+            MainService.UpdateContact(result, indexSource).then(function (data) {
                 if (data !== "not a number") {
                     $scope.data[index] = result;
+                    $scope.Fulldata[indexSource] = result;
                 }
             });
           
@@ -47,8 +52,41 @@
         $scope.$watch(function () {
             return $mdMedia('xs') || $mdMedia('sm');
         });
-    };
+   };
 
+  
+  
+  
+   $scope.typed = function(searchText){
+        filter(); 
+   }
+ 
+ 
+ function filter()
+ {
+     $scope.data = filterFilter($scope.Fulldata, $scope.searchText).slice(0, 25);
+ }
+ 
+ 
+ $scope.$watch('Fulldata', function(){
+   console.log('data changed')
+   ind = 0
+   if ($scope.Fulldata !=  undefined)
+   {
+          $scope.data = $scope.Fulldata.slice(0, 25);
+   }
+ })
+
+
+  $scope.loadMore = function() {
+    ind = ind + 25
+    var r = 25
+    if (ind + 25 >= $scope.Fulldata.length) {
+      r = $scope.data.length - ind
+    }
+    console.log("Loading")
+    $scope.data = $scope.data.concat($scope.Fulldata.slice(ind, r + ind))
+  }
 }]);
 
 
@@ -69,3 +107,22 @@ function DialogController($scope, $mdDialog, contact) {
         $mdDialog.hide($scope.contact);
     };
 }
+
+
+
+
+app.directive('lazyLoad', function() {
+  return {
+    restrict: 'A',
+    link: function(scope, elem) {
+      var scroller = elem[0]
+       $(scroller).bind('scroll', function() {
+        if (scroller.scrollTop + scroller.offsetHeight >= scroller.scrollHeight) {
+          scope.$apply('loadMore()');
+        }
+      
+        
+      })
+    }
+  }
+});
